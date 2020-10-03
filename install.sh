@@ -32,6 +32,13 @@ chmod 755 /usr/local/bin/sops
 curl --silent --show-error --fail --location --output /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/"${YQ_BIN_VERSION}"/yq_linux_amd64
 chmod 755 /usr/local/bin/yq
 
+
+# install terraform
+curl --silent --show-error --fail --location --output /tmp/terraform.tar.gz https://releases.hashicorp.com/terraform/"${TERRAFORM_VERSION}"/terraform_"${TERRAFORM_VERSION}"_linux_amd64.zip
+tar -C /usr/local/bin -xf /tmp/terraform.tar.gz terraform
+rm /tmp/terraform.tar.gz
+
+
 # set permissions
 mkdir -p /data
 chown gkh /data /entrypoint.sh /data/commands.sh
